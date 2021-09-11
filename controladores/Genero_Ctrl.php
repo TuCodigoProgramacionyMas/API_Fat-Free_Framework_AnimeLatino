@@ -1,11 +1,11 @@
 <?php
 
-class Anime_Ctrl{
-    public $M_Anime= null;
+class Genero_Ctrl{
+    public $M_Genero= null;
     public function __construct(){
-        $this->M_Anime=new M_Animes();
+        $this->M_Genero=new M_Generos();
     }
-
+/*
     public function crear($f3){
         $this->M_Anime->set('Nombre', $f3->get('POST.Nombre'));
         $this->M_Anime->set('Descripcion', $f3->get('POST.Descripcion'));
@@ -19,34 +19,21 @@ class Anime_Ctrl{
 
         echo $this->M_Anime->get('id');
     }
+    */
     public function consultar($f3){
 
-        $parametro= $f3->get('POST.texto');
-        $result =$this->M_Anime->find(['idAnime=?',$parametro]);
 
         
-        $item=array();
-        foreach($result as $anime){
-            $item[]=$anime->cast();
-        }
-        echo json_encode([
-            'mensaje'=> count($item)>0?'':'Aun no hay registro',
-            'info'=>[
-                'item'=> $item
-                ]
-
-            ]);
-       
-        /*
+        
         $parametro= $f3->get('PARAMS.parametro');
-        $this->M_Anime->load(['idAnime=?',$parametro]);
+        $this->M_Genero->load(['idGenero=?',$parametro]);
         $msg="";
         $item=array();
 
 
-        if($this->M_Anime->loaded()>0){
+        if($this->M_Genero->loaded()>0){
             $msg="Anime encontrado";
-            $item=$this->M_Anime->cast();
+            $item=$this->M_Genero->cast();
         }
         else{
             $msg="Anime no encontrado";
@@ -58,7 +45,7 @@ class Anime_Ctrl{
                 ]
 
             ]);
-            */
+            
     }
     /* consulta con limite y paginacion
     public function consultarLimitada($f3){
@@ -109,13 +96,13 @@ class Anime_Ctrl{
     }
    */
     public function listado($f3){
-        
-        $result =$this->M_Anime->find();
+
+        $result =$this->M_Genero->find();
 
         
         $item=array();
-        foreach($result as $anime){
-            $item[]=$anime->cast();
+        foreach($result as $genero){
+            $item[]=$genero->cast();
         }
         echo json_encode([
             'mensaje'=> count($item)>0?'':'Aun no hay registro',

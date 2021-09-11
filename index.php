@@ -24,12 +24,14 @@ $f3->set('DB', new DB\SQL('mysql:host='.$f3->get('database.host').';port=3306;db
     \PDO::ATTR_PERSISTENT => TRUE,  // we want to use persistent connections
     \PDO::MYSQL_ATTR_COMPRESS => TRUE, // MySQL-specific attribute
 ));
+/*
+$users = $f3->get('DB')->exec('SELECT * FROM anime');
 
-/* $f3->route('GET /prueba-1', function($f3){
-	$M_anime= new M_anime();
+ $f3->route('GET /prueba-1', function($f3){
+	
 
 	echo "<pre>";
-	print_r($M_anime);
+	print_r("Hola");
 	echo "</pre>";
 });
 
